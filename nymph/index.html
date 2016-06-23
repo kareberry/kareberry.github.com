@@ -27,7 +27,7 @@
 	<b>
 	<ol>
 		<li>
-			用下方面板输入新衣服名称、类型、ID、星级、标签和属性，然后点击添加。
+			用下方面板输入新衣服名称、类型、ID、星级、标签和属性，然后点击“添加”。
 		</li>
 		<li>
 			添加完所有衣服后，<span style="color:orange">刷新网页</span>。新衣服就会加入配装器数据库。
@@ -37,6 +37,9 @@
 		</li>
 		<li>
 			竞技场关卡采用标准模式，其余关卡采用极限模式。
+		</li>
+		<li>
+			复制列表上方文本框中的内容，传给其他人，收到的人将内容粘贴进文本框并点击“导入”，可以同步衣服数据。
 		</li>
 	</ol>
 	</b>
@@ -146,6 +149,9 @@
 	<div class="crAttributeHr"></div>
 	<button id="cr_add" class="btn btn-default btn-sm" onclick="cr_AddClothes()">添加</button>
 	<button id="cr_reset" class="btn btn-default btn-sm" onclick="cr_Reset()">重置</button>
+	<button id="cr_setdata" class="btn btn-default btn-sm" onclick="cr_SetData()">导入</button>
+	<br/>
+	<input type="text" id="crData" />
 	<div id="cr_list"></div>
 	<hr/>
     <div id='filtersTop'>
@@ -253,7 +259,7 @@
     </div>
     <hr/>
     <div id="summary" class="panel">
-      <h3>分类排行</h3>
+      <h3>for 玉人</h3>
       <div id="ranking">
       </div>
     </div>

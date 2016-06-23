@@ -72,12 +72,15 @@ function cr_SaveWardrobe()
 	var sa = [];
 	for (var i in cr_Wardrobe)
 		sa.push(cr_Wardrobe[i].join('|'));
-	cr_SetCookie('crwardrobe', sa.join('#'));
+	var s = sa.join('#');
+	cr_SetCookie('crwardrobe', s);
+	return s;
 }
 
 function cr_UpdateList()
 {
-	cr_SaveWardrobe();
+	var s = cr_SaveWardrobe();
+	$("#crData").val(s);
 	$("#cr_list").empty();
 	for (var i in cr_Wardrobe)
 	{
@@ -187,4 +190,18 @@ function cr_Reset()
 	$('#crTags').val('');
 	$('input.cr-attr-radio').removeAttr('checked');
 	$('input.cr-attr-radio').parent('label').removeClass('active');
+}
+
+function cr_SetData()
+{
+	cr_Wardrobe = [];
+	var sa = $("#crData").val().split('#');
+	for (var i in sa)
+	{
+		var c = sa[i].split('|');
+		if (c.length != wardrobe[0].length)
+			continue;
+		cr_Wardrobe.push(c);
+	}
+	cr_UpdateList();
 }
