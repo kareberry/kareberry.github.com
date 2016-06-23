@@ -1,0 +1,4 @@
+#cr_scanresult {width:240px;min-height:100px;padding-bottom:2px;border:1px #000 solid;margin-top:5px}
+.cr_result_name {font-weight:bold;color:#F7C;font-size:16px}
+.cr_result_cate {color:#777}
+.cr_result_count {color:#F72}

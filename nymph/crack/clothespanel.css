@@ -1,0 +1,23 @@
+#crName {width:240px;height:25px;margin:5px}
+#crCategory {width:130px;height:25px;margin:0 5px 5px}
+#crId {width:50px;height:25px;margin:0 0 5px}
+#crRarity {width:50px;height:25px;margin:0 5px 5px}
+#crTags {width:240px;height:25px;margin:0 5px 5px}
+.crAttribute {margin: 0 5px 5px}
+.crAttribute * {float:left;border-radius:0}
+.crAttribute span {clear:left;border-radius:5px 0 0 5px;line-height:25px}
+.crAttribute .last {border-radius:0 5px 5px 0}
+.crAttributeHr {clear:both;width:240px;margin:2px 5px;border-bottom:1px #777 solid}
+#cr_add {width:100px;margin:5px 5px 5px 15px}
+#cr_reset {width:100px;margin:5px 15px 5px 5px}
+#cr_list {width:240px;min-height:50px;padding-bottom:2px;border:1px #888 solid;margin:0 5px 5px}
+.cr_listitem {border:1px #CCC solid;padding:5px;margin:2px 2px 0}
+.cr_listitem span{display:inline-block}
+.cr_listitem .crli_left{width:100px;padding-left:5px;display:inline-block}
+.cr_listitem .crli_right{width:90px;display:inline-block}
+.cr_listitem .crli_delete{width:20px;display:inline-block}
+.cr_listitem .crli_btndelete{height:125px;margin-top:-175px}
+.cr_listitem .crli_right *{margin:3px 10px}
+.cr_listitem .crli_l1{font-weight:bold;color:#F7C;font-size:16px;border-bottom:1px dashed #AAA;margin-bottom:3px}
+.cr_listitem .crli_l3{color:#777}
+.cr_listitem .crli_l4{font-weight:bold;color:#F77;font-size:18px}
