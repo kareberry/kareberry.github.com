@@ -192,8 +192,15 @@ function cr_Reset()
 	$('input.cr-attr-radio').parent('label').removeClass('active');
 }
 
+function cr_Refresh()
+{
+	history.go(0);
+}
+
 function cr_SetData()
 {
+	if (!confirm('确定要同步衣服数据吗？'))
+		return;
 	cr_Wardrobe = [];
 	var sa = $("#crData").val().split('#');
 	for (var i in sa)

@@ -8,9 +8,10 @@
 .crAttribute span {clear:left;border-radius:5px 0 0 5px;line-height:25px}
 .crAttribute .last {border-radius:0 5px 5px 0}
 .crAttributeHr {clear:both;width:240px;margin:2px 5px;border-bottom:1px #777 solid}
-#cr_add {width:60px;margin:5px 5px 5px 15px}
-#cr_reset {width:60px;margin:5px}
-#cr_setdata {width:60px;margin:5px 15px 5px 5px}
+#cr_add {width:55px;margin:5px}
+#cr_reset {width:55px;margin:5px 5px 5px 0}
+#cr_setdata {width:55px;margin:5px 5px 5px 0}
+#cr_refresh {width:55px;margin:5px 5px 5px 0}
 #crData {width:240px;height:25px;margin:0 5px 5px}
 #cr_list {width:240px;min-height:50px;padding-bottom:2px;border:1px #888 solid;margin:0 5px 5px}
 .cr_listitem {border:1px #CCC solid;padding:5px;margin:2px 2px 0}
