@@ -15,6 +15,7 @@
 #crData {width:240px;height:25px;margin:0 5px 5px}
 #cr_list {width:240px;min-height:50px;padding-bottom:2px;border:1px #888 solid;margin:0 5px 5px}
 .cr_listitem {border:1px #CCC solid;padding:5px;margin:2px 2px 0}
+.cr_loadeditem {border:1px #F77 solid;background:#FFF7F7}
 .cr_listitem span{display:inline-block}
 .cr_listitem .crli_left{width:100px;padding-left:5px;display:inline-block}
 .cr_listitem .crli_right{width:90px;display:inline-block}

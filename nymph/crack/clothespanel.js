@@ -58,7 +58,7 @@ function cr_LoadWardrobe()
 		var c = sa[i].split('|');
 		if (c.length != wardrobe[0].length)
 			continue;
-		cr_Wardrobe.push(c);
+		cr_Wardrobe.push([c, true]);
 		wardrobe.push(c);
 	}
 	$(document).ready(function()
@@ -71,7 +71,7 @@ function cr_SaveWardrobe()
 {
 	var sa = [];
 	for (var i in cr_Wardrobe)
-		sa.push(cr_Wardrobe[i].join('|'));
+		sa.push(cr_Wardrobe[i][0].join('|'));
 	var s = sa.join('#');
 	cr_SetCookie('crwardrobe', s);
 	return s;
@@ -84,35 +84,38 @@ function cr_UpdateList()
 	$("#cr_list").empty();
 	for (var i in cr_Wardrobe)
 	{
-		var rarity = "♥♥♥♥♥".substring(5 - parseInt(cr_Wardrobe[i][3]));
-		var id = 'No.' + cr_Wardrobe[i][2];
+		var rarity = "♥♥♥♥♥".substring(5 - parseInt(cr_Wardrobe[i][0][3]));
+		var id = 'No.' + cr_Wardrobe[i][0][2];
 		if (id == "")
 			id = "???";
-		var tags = cr_Wardrobe[i][14];
+		var tags = cr_Wardrobe[i][0][14];
 		if (tags == "")
 			tags = "&nbsp;";
 		var r1, r2, r3, r4, r5;
-		if (cr_Wardrobe[i][5] == "")
-			r1 = "华丽:" + cr_Wardrobe[i][4];
+		if (cr_Wardrobe[i][0][5] == "")
+			r1 = "华丽:" + cr_Wardrobe[i][0][4];
 		else
-			r1 = "简约:" + cr_Wardrobe[i][5];
-		if (cr_Wardrobe[i][10] == "")
-			r2 = "清纯:" + cr_Wardrobe[i][11];
+			r1 = "简约:" + cr_Wardrobe[i][0][5];
+		if (cr_Wardrobe[i][0][10] == "")
+			r2 = "清纯:" + cr_Wardrobe[i][0][11];
 		else
-			r2 = "性感:" + cr_Wardrobe[i][10];
-		if (cr_Wardrobe[i][6] == "")
-			r3 = "活泼:" + cr_Wardrobe[i][7];
+			r2 = "性感:" + cr_Wardrobe[i][0][10];
+		if (cr_Wardrobe[i][0][6] == "")
+			r3 = "活泼:" + cr_Wardrobe[i][0][7];
 		else
-			r3 = "优雅:" + cr_Wardrobe[i][6];
-		if (cr_Wardrobe[i][13] == "")
-			r4 = "清凉:" + cr_Wardrobe[i][12];
+			r3 = "优雅:" + cr_Wardrobe[i][0][6];
+		if (cr_Wardrobe[i][0][13] == "")
+			r4 = "清凉:" + cr_Wardrobe[i][0][12];
 		else
-			r4 = "保暖:" + cr_Wardrobe[i][13];
-		if (cr_Wardrobe[i][8] == "")
-			r5 = "可爱:" + cr_Wardrobe[i][9];
+			r4 = "保暖:" + cr_Wardrobe[i][0][13];
+		if (cr_Wardrobe[i][0][8] == "")
+			r5 = "可爱:" + cr_Wardrobe[i][0][9];
 		else
-			r5 = "成熟:" + cr_Wardrobe[i][8];
-		var ele = '<div class="cr_listitem"><div class="crli_left"><div class="crli_l1">' + cr_Wardrobe[i][0] + '</div><div class="crli_l2">' + cr_Wardrobe[i][1] + '</div><div class="crli_l3">' + id + '</div><div class="crli_l4">' + rarity + '</div><div class="crli_l5">' + tags + '</div></div><div class="crli_right"><div class="crli_r1">' + r1 + '</div><div class="crli_r2">' + r2 + '</div><div class="crli_r3">' + r3 + '</div><div class="crli_r4">' + r4 + '</div><div class="crli_r5">' + r5 + '</div></div><div class="crli_delete"><button class="btn btn-danger btn-xs crli_btndelete" onclick="cr_RemoveClothes(' + i + ')">X</button></div></div>';
+			r5 = "成熟:" + cr_Wardrobe[i][0][8];
+		var exclass = '';
+		if (cr_Wardrobe[i][1])
+			exclass = ' cr_loadeditem';
+		var ele = '<div class="cr_listitem' + exclass + '"><div class="crli_left"><div class="crli_l1">' + cr_Wardrobe[i][0][0] + '</div><div class="crli_l2">' + cr_Wardrobe[i][0][1] + '</div><div class="crli_l3">' + id + '</div><div class="crli_l4">' + rarity + '</div><div class="crli_l5">' + tags + '</div></div><div class="crli_right"><div class="crli_r1">' + r1 + '</div><div class="crli_r2">' + r2 + '</div><div class="crli_r3">' + r3 + '</div><div class="crli_r4">' + r4 + '</div><div class="crli_r5">' + r5 + '</div></div><div class="crli_delete"><button class="btn btn-danger btn-xs crli_btndelete" onclick="cr_RemoveClothes(' + i + ')">X</button></div></div>';
 		$("#cr_list").append(ele);
 	}
 }
@@ -156,7 +159,7 @@ function cr_AddClothes()
 		tags,
 		'',
 		''];
-	cr_Wardrobe.push(c);
+	cr_Wardrobe.push([c, false]);
 	cr_UpdateList();
 }
 
