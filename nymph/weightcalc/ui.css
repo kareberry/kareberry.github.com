@@ -1,0 +1,17 @@
+.box {border:3px #707 groove; padding:5px 0 5px}
+.title {text-align:center; font-size:20px; font-weight:bold}
+.break {margin:8px 0 8px; border-bottom:1px dashed #000}
+#law_table {text-align:center; margin:0 auto 0}
+.law_row {white-space:nowrap}
+.law_cell {border:1px #FFF solid; background:#FFF; width:50px; display:inline-block}
+.law_cell:first-child {width:80px; background:#000; color:#FFF; font-weight:bold}
+#law_col_header .law_cell {background:#000; color:#FFF; font-weight:bold}
+#law_col_basescore .law_cell:not(:first-child) {background:#FFD}
+#law_col_basescore .law_cell:first-child {color:#FFD}
+#law_col_weight .law_cell:not(:first-child) {background:#EEF}
+#law_col_weight .law_cell:first-child {color:#EEF}
+#law_col_ipweight .law_cell:not(:first-child) {background:#EFE}
+#law_col_ipweight .law_cell:first-child {color:#EFE}
+.law_inputbox input {width:90%; border:none; text-align:center}
+.law_inputbox {border:1px #000 solid; margin:1px}
+#law_ipscript {width:500px; text-align:center}

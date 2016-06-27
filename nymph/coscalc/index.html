@@ -1,0 +1,301 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <title>配装器&顶配计算器 - Project. Nymph</title>
+    <script type='text/javascript' charset="UTF-8" src='jquery.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='jquery.floatThead.min.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='jquery.collapse.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='jquery.auto-complete.min.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='data/wardrobe.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='crack/clothespanel.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='data/scoring.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='data/blacklist.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='levels.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='data/model.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='data/pattern.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='data/skills.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='data/npc.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='nikki.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='crack/scanner.js'></script>
+    <link rel="stylesheet" href="jquery.auto-complete.css">
+    <link rel="stylesheet" href="ui.css">
+    <link rel="stylesheet" href="crack/clothespanel.css">
+    <link rel="stylesheet" href="crack/scanner.css">
+  </head>
+  <body>
+    <div class='announcement'>
+	<b>
+	<ol>
+		<li>
+			用下方面板输入新衣服名称、类型、ID、星级、标签和属性，然后点击“添加”。
+		</li>
+		<li>
+			<span style="color:orange">刷新网页</span>，新衣服就会加入配装器数据库，列表中显示为红色。
+		</li>
+		<li>
+			点击“一键顶配”，<span style="color:orange">耐心等待两分钟左右</span>，结果会显示在按钮下方空白区域，格式为“关卡名称 - 排名”。
+		</li>
+		<li>
+			计算顶配的衣服包括新添加的衣服，以及衣柜中的所有衣服。
+		</li>
+		<li>
+			竞技场关卡采用标准模式，其余关卡采用极限模式。
+		</li>
+		<li>
+			复制列表上方文本框中的内容，传给其他人，收到的人将内容粘贴进文本框并点击“导入”，可以同步衣服数据。
+		</li>
+	</ol>
+	</b>
+	<span style="font-size:12px;margin-left:30px">6/24/2016 v1.1</span><br/>
+	<span style="font-size:12px;margin-left:30px">By 果子</span>
+    </div>
+    <hr/>
+	<button id="cr_btnscan" class="btn btn-default btn-sm" onclick="cr_Scan()">一键顶配</button>
+	<div id="cr_scanresult"></div>
+    <hr/>
+	<input type="text" id="crName" placeholder="名称" />
+	<br/>
+	<select id="crCategory"></select><input type="text" id="crId" placeholder="ID" /><select id="crRarity"></select>
+	<br/>
+	<input type="text" id="crTags" placeholder="标签，用空格分隔" />
+	<br/>
+	<div class="crAttributeHr"></div>
+	<div class="crAttribute" role="group" data-toggle="buttons">
+		<span class="label label-primary">简约</span>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_simple" value="C"/>C</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_simple" value="B"/>B</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_simple" value="A"/>A</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_simple" value="S"/>S</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_simple" value="SS"/>SS</label>
+		<label class="btn btn-sm btn-default last"><input class="cr-attr-radio" type="radio" name="cr_simple" value="SSS"/>SSS</label>
+		<div></div>
+		<span class="label label-primary">华丽</span>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_simple" value="C"/>C</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_simple" value="B"/>B</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_simple" value="A"/>A</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_simple" value="S"/>S</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_simple" value="SS"/>SS</label>
+		<label class="btn btn-sm btn-default last"><input class="cr-attr-radio attr-negative" type="radio" name="cr_simple" value="SSS"/>SSS</label>
+	</div>
+	<div class="crAttributeHr"></div>
+	<div class="crAttribute" role="group" data-toggle="buttons">
+		<span class="label label-info">清纯</span>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_pure" value="C"/>C</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_pure" value="B"/>B</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_pure" value="A"/>A</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_pure" value="S"/>S</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_pure" value="SS"/>SS</label>
+		<label class="btn btn-sm btn-default last"><input class="cr-attr-radio" type="radio" name="cr_pure" value="SSS"/>SSS</label>
+		<div></div>
+		<span class="label label-info">性感</span>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_pure" value="C"/>C</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_pure" value="B"/>B</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_pure" value="A"/>A</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_pure" value="S"/>S</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_pure" value="SS"/>SS</label>
+		<label class="btn btn-sm btn-default last"><input class="cr-attr-radio attr-negative" type="radio" name="cr_pure" value="SSS"/>SSS</label>
+	</div>
+	<div class="crAttributeHr"></div>
+	<div class="crAttribute" role="group" data-toggle="buttons">
+		<span class="label label-primary">活泼</span>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_active" value="C"/>C</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_active" value="B"/>B</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_active" value="A"/>A</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_active" value="S"/>S</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_active" value="SS"/>SS</label>
+		<label class="btn btn-sm btn-default last"><input class="cr-attr-radio" type="radio" name="cr_active" value="SSS"/>SSS</label>
+		<div></div>
+		<span class="label label-primary">优雅</span>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_active" value="C"/>C</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_active" value="B"/>B</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_active" value="A"/>A</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_active" value="S"/>S</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_active" value="SS"/>SS</label>
+		<label class="btn btn-sm btn-default last"><input class="cr-attr-radio attr-negative" type="radio" name="cr_active" value="SSS"/>SSS</label>
+	</div>
+	<div class="crAttributeHr"></div>
+	<div class="crAttribute" role="group" data-toggle="buttons">
+		<span class="label label-primary">清凉</span>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_cool" value="C"/>C</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_cool" value="B"/>B</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_cool" value="A"/>A</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_cool" value="S"/>S</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_cool" value="SS"/>SS</label>
+		<label class="btn btn-sm btn-default last"><input class="cr-attr-radio" type="radio" name="cr_cool" value="SSS"/>SSS</label>
+		<div></div>
+		<span class="label label-primary">保暖</span>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cool" value="C"/>C</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cool" value="B"/>B</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cool" value="A"/>A</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cool" value="S"/>S</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cool" value="SS"/>SS</label>
+		<label class="btn btn-sm btn-default last"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cool" value="SSS"/>SSS</label>
+	</div>
+	<div class="crAttributeHr"></div>
+	<div class="crAttribute" role="group" data-toggle="buttons">
+		<span class="label label-info">可爱</span>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_cute" value="C"/>C</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_cute" value="B"/>B</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_cute" value="A"/>A</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_cute" value="S"/>S</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio" type="radio" name="cr_cute" value="SS"/>SS</label>
+		<label class="btn btn-sm btn-default last"><input class="cr-attr-radio" type="radio" name="cr_cute" value="SSS"/>SSS</label>
+		<div></div>
+		<span class="label label-info">成熟</span>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cute" value="C"/>C</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cute" value="B"/>B</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cute" value="A"/>A</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cute" value="S"/>S</label>
+		<label class="btn btn-sm btn-default"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cute" value="SS"/>SS</label>
+		<label class="btn btn-sm btn-default last"><input class="cr-attr-radio attr-negative" type="radio" name="cr_cute" value="SSS"/>SSS</label>
+	</div>
+	<div class="crAttributeHr"></div>
+	<button id="cr_add" class="btn btn-default btn-sm" onclick="cr_AddClothes()">添加</button>
+	<button id="cr_reset" class="btn btn-default btn-sm" onclick="cr_Reset()">重置</button>
+	<button id="cr_setdata" class="btn btn-default btn-sm" onclick="cr_SetData()">导入</button>
+	<button id="cr_refresh" class="btn btn-default btn-sm" onclick="cr_Refresh()">刷新</button>
+	<br/>
+	<input type="text" id="crData" />
+	<div id="cr_list"></div>
+	<hr/>
+    <div id='filtersTop'>
+      <form name="filter_form">
+        <div class='control'>
+          <input type="radio" name="mode" value="filtering" onClick="changeMode(true)" /> 筛选
+          <input type="radio" name="mode" value="ranking" onClick="changeMode(false)" checked/> 计分
+          <select id="theme" onChange="changeTheme()" style="display: none"></select>
+          <input class="nice" type="radio" name="boost" id="boostStandard" value="standard" onClick="changeBoost(1)" checked/>
+          <label for="boostStandard">标准</label>
+          <input class="nice" type="radio" name="boost" id="boostExtreme" value="boostExtreme" onClick="changeBoost(2)" />
+          <label for="boostExtreme">极限-顶配</label>
+          <input class="nice" type="radio" name="boost" id="boostExtremeMine" value="boostExtremeMine" onClick="changeBoost(3)" />
+          <label for="boostExtremeMine">极限-我的衣柜</label>
+        </div>
+        <div class='facet'>
+          <div class='control'>
+            <input type="radio" name="simple" value="0" onClick="changeFilter()" /> 皆可
+            <input type="radio" name="simple" value="1" onClick="changeFilter()" /> 简约
+            <input type="radio" name="simple" value="-1" onClick="changeFilter()" /> 华丽
+            <div class='weightContainer' style="display: none" id = "simpleWeightContainer">
+            	&nbsp;&nbsp;权重 <input type="text" id="simpleWeight" name="simpleWeight" value="1" onChange="changeFilter()" />
+              <span class="boost" id="simpleBoost"></span>
+          	</div>
+          </div>
+          <div class='control'>
+            <input type="radio" name="cute" value="0" onClick="changeFilter()" /> 皆可
+            <input type="radio" name="cute" value="1" onClick="changeFilter()" /> 可爱
+            <input type="radio" name="cute" value="-1" onClick="changeFilter()" /> 成熟
+            <div class='weightContainer' style="display: none" id = "cuteWeightContainer">
+            	&nbsp;&nbsp;权重 <input type="text" id="cuteWeight" name="cuteWeight" value="1" onChange="changeFilter()" />
+              <span class="boost" id="cuteBoost"></span>
+            </div>
+          </div>
+          <div class='control'>
+            <input type="radio" name="active" value="0" onClick="changeFilter()" /> 皆可
+            <input type="radio" name="active" value="1" onClick="changeFilter()" /> 活泼
+            <input type="radio" name="active" value="-1" onClick="changeFilter()" /> 优雅
+            <div class='weightContainer' style="display: none" id = "activeWeightContainer">
+              &nbsp;&nbsp;权重 <input type="text" id="activeWeight" name="activeWeight" value="1" onChange="changeFilter()" />
+              <span class="boost" id="activeBoost"></span>
+            </div>
+          </div>
+          <div class='control'>
+            <input type="radio" name="pure" value="0" onClick="changeFilter()" /> 皆可
+            <input type="radio" name="pure" value="1" onClick="changeFilter()" /> 清纯
+            <input type="radio" name="pure" value="-1" onClick="changeFilter()" /> 性感
+            <div class='weightContainer' style="display: none" id = "pureWeightContainer">
+              &nbsp;&nbsp;权重 <input type="text" id="pureWeight" name="pureWeight" value="1" onChange="changeFilter()" />
+              <span class="boost" id="pureBoost"></span>
+            </div>
+          </div>
+          <div class='control'>
+            <input type="radio" name="cool" value="0" onClick="changeFilter()" /> 皆可
+            <input type="radio" name="cool" value="1" onClick="changeFilter()" /> 清凉
+            <input type="radio" name="cool" value="-1" onClick="changeFilter()" /> 保暖
+            <div class='weightContainer' style="display: none" id = "coolWeightContainer">
+              &nbsp;&nbsp;权重 <input type="text" id="coolWeight" name="coolWeight" value="1" onChange="changeFilter()" />
+              <span class="boost" id="coolBoost"></span>
+            </div>
+          </div>
+          <div id='tagFilter'>
+            <div class='control'>
+              Tag1
+              <input type="text" id="tag1" name="tag1" onChange="changeFilter()" />
+              <div class='tagContainer weightContainer' style="display: none" id = "tag1Container">
+                <input type="radio" name="tag1method" value="add" onClick="changeFilter()" checked/> 加分
+                <select id="tag1base" onChange="changeFilter()">
+                  <option>SS</option>
+                  <option>S</option>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                </select>
+                &times;
+                <input type="text" id="tag1weight" name="tag1weight" value="1" onChange="changeFilter()" />
+              </div>
+            </div>
+            <div class='control'>
+              Tag2
+              <input type="text" id="tag2" name="tag2" onChange="changeFilter()" />
+              <div class='tagContainer weightContainer' style="display: none" id = "tag2Container">
+                <input type="radio" name="tag2method" value="add" onClick="changeFilter()" checked/> 加分
+                <select id="tag2base" onChange="changeFilter()">
+                  <option>SS</option>
+                  <option>S</option>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                </select>
+                &times;
+                <input type="text" id="tag2weight" name="tag2weight" value="1" onChange="changeFilter()" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <input type="checkbox" name="inventory" value="own" onClick="onChangeUiFilter()" checked />拥有
+          <span id='inventoryCount'> </span>
+          <input type="checkbox" name="inventory" value="missing" onClick="onChangeUiFilter()" checked /> 没有
+        </div>
+      </form>
+    </div>
+    <div id="skills">
+    </div>
+    <hr/>
+    <div id="summary" class="panel">
+      <h3>分类排行</h3>
+      <div id="ranking">
+      </div>
+    </div>
+    <div id='shoppingCartContainer'>
+      已选择的衣服
+      <span id="accessoriesPanel"><input type="checkbox" id="accessoriesHelper" checked />自动选择饰品</span>
+      <span id="accessoriesWarning" class="red" style="display:none">极限模式下所有衣服均为自动推荐</span>
+      <button onclick="clearShoppingCart()">清空购物车</button>
+      <input type="text" id="searchitem" placeholder="输入衣服名称或编号" class='suggest'/>
+      <div id='shoppingCart'>
+      </div>
+    </div>
+    <hr/>
+    <div id='category_container'> 
+    </div>
+    <div id = "clothes"></div>
+    <hr/>
+    导入批量衣服，请先选择要导入的类别，然后在文本框内输入编号，用空格、逗号或者换行隔开。不知道编号在哪儿的请点<a href="http://tieba.baidu.com/p/3808711082" target="_blank">这里</a>
+    <div id = "import">
+      <select id="importCate" onChange="clearImport()"></select> <br/>
+      <textarea id="importData" rows=5 style="width:600px"></textarea>
+      <button onClick="doImport()">导入</button>
+    </div>
+
+    <hr/>
+    <p>我拥有的服装 （复制衣橱文本框内容以备份衣橱）</p>
+    <textarea id="myClothes" rows=10 style="width:600px"></textarea>
+    <br/>
+    <button onClick="loadCustomInventory()">Update inventory</button>
+    <br/>
+	<hr/>
+    <div id = 'log'></div>
+  </body>
+</html>
