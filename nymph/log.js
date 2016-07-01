@@ -11,9 +11,9 @@ var log_init = function()
 			var str = lines.join('<br/>');
 			str += '<br/><br/><span class="lognotice">收起更新日志</span>';
 			divbox.attr('fulltext', str);
-			var trun = lines[0];
-			trun += '<br/>' + 'By 果子';
-			trun += '<br/><br/><span class="lognotice">查看全部更新日志</span>';
+			var trun = '<span class="loglastupdate">最后更新: ' + lines[0] + '</span>';
+			trun += '<br/><br/>' + 'By 果子';
+			trun += '<br/><span class="lognotice">查看全部更新日志</span>';
 			divbox.attr('truncatedtext', trun);
 			divbox.html(trun);
 			div.html(divbox);

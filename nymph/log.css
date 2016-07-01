@@ -10,3 +10,7 @@
 .lognotice {
 	color:#AAA;
 }
+.loglastupdate {
+	font-weight:bold;
+	color:#704;
+}
