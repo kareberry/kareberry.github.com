@@ -27,32 +27,22 @@ var cr_Init = function()
 	});
 }();
 
-function cr_GetCookie(c_name)
+function cr_LoadData()
 {
-	if (document.cookie.length > 0)
-	{
-		c_start = document.cookie.indexOf(c_name + "=");
-		if (c_start != -1)
-		{
-			c_start = c_start + c_name.length + 1;
-			c_end = document.cookie.indexOf(";", c_start);
-			if (c_end == -1)
-				c_end = document.cookie.length;
-			return unescape(document.cookie.substring(c_start, c_end));
-		}
-	}
-	return "";
+	var data = localStorage.getItem('crwardrobe');
+	if (data == null)
+		return '';
+	return data;
 }
 
-function cr_SetCookie(c_name, c_value)
+function cr_SetData(data)
 {
-	document.cookie = c_name + '=' + c_value;
+	localStorage.setItem('crwardrobe', data);
 }
 
 function cr_LoadWardrobe()
 {
-	//cr_SetCookie('crwardrobe', '调试用1|发型|998|5||SS||SS||SS||SS||SS||赠送|#调试用2|发型|999|5||SS||SS||SS||SS||SS||赠送|');
-	var sa = cr_GetCookie('crwardrobe').split('#');
+	var sa = cr_LoadData().split('#');
 	for (var i in sa)
 	{
 		var c = sa[i].split('|');
@@ -73,7 +63,7 @@ function cr_SaveWardrobe()
 	for (var i in cr_Wardrobe)
 		sa.push(cr_Wardrobe[i][0].join('|'));
 	var s = sa.join('#');
-	cr_SetCookie('crwardrobe', s);
+	cr_SetData(s);
 	return s;
 }
 
@@ -200,7 +190,7 @@ function cr_Refresh()
 	history.go(0);
 }
 
-function cr_SetData()
+function cr_SyncData()
 {
 	if (!confirm('确定要同步衣服数据吗？'))
 		return;
