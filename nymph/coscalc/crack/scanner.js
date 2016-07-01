@@ -7,7 +7,7 @@ function cr_Scan()
 	for (var cate in clothesSet)
 		for (var id in clothesSet[cate])
 			if (clothesSet[cate][id].own)
-				targettmp[clothesSet[cate][id].name] = cate;
+				targettmp[clothesSet[cate][id].name] = clothesSet[cate][id].type.type;
 	for (var name in targettmp)
 		target.push([name, targettmp[name]]);
 	var result = [];
