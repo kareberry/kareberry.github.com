@@ -1,0 +1,28 @@
+#crSearchText {
+	width:180px;
+	margin:5px;
+}
+#crSearchButton {
+	width:55px;
+	margin:5px 5px 5px 0;
+}
+#crSearchBar {
+	margin-bottom:5px;
+}
+#crSearchResult > div{
+	display:inline-block;
+}
+#crSearchResult .button {
+	font-size:12px;
+}
+#crSearchResult div.own.deps .button {
+	background-color: #fdd;
+}
+#crSearchResult div.own .button
+{
+	padding-left:20px;
+	background-position: 5px 8px;
+	background-repeat: no-repeat;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAU0lEQVR42mNgoAHgZ2FjO8/MxjafaMUs7Oz/QZiQJhTFYAzkg2VAOqEcfgKK+SGKUQXlcSoGAQxJdIxqMw7r8ShmIOhmokKFCMVwTdCw5qdatAMAai8zEfxslWsAAAAASUVORK5CYII=);
+	background-color: #dfd;
+}

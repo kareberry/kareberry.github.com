@@ -98,7 +98,7 @@ function clearShoppingCart() {
 function toggleInventory(type, id) {
   var checked = !clothesSet[type][id].own;
   clothesSet[type][id].own = checked;
-  $('#clickable-' + type + id).toggleClass('own');
+  $('.clickable-' + type + id).toggleClass('own');
   saveAndUpdate();
 }
 
@@ -117,7 +117,7 @@ function clickableTd(piece) {
     }
   }
   cls += own ? ' own' : '';
-  return "<td id='clickable-" + (type + id) + "' class='" + cls
+  return "<td class='clickable-" + (type + id) + " " + cls
       + "'><a href='#dummy' class='button' " + tooltip
       + "onClick='toggleInventory(\"" + type + "\",\"" + id + "\")'>"
       + name + "</a></td>";

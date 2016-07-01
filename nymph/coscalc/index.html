@@ -20,10 +20,12 @@
     <script type='text/javascript' charset="UTF-8" src='data/npc.js'></script>
     <script type='text/javascript' charset="UTF-8" src='nikki.js'></script>
     <script type='text/javascript' charset="UTF-8" src='crack/scanner.js'></script>
+    <script type='text/javascript' charset="UTF-8" src='crack/search.js'></script>
     <link rel="stylesheet" href="jquery.auto-complete.css">
     <link rel="stylesheet" href="ui.css">
     <link rel="stylesheet" href="crack/clothespanel.css">
     <link rel="stylesheet" href="crack/scanner.css">
+    <link rel="stylesheet" href="crack/search.css">
   </head>
   <body>
 	<ol>
@@ -53,6 +55,7 @@
 	7/1/2016
 	添加14章关卡数据(测试版)和新衣服
 	修复了测试衣服数量过多会消失的bug
+	增加衣服搜索功能
 	
 	6/24/2016 v1.1
 	初次上线及改进
@@ -285,6 +288,14 @@
       </div>
     </div>
     <hr/>
+	<div id="crSearch">
+		<div id="crSearchBar">
+			<input type="text" id="crSearchText" placeholder="输入搜索文字" onkeypress="return cr_SearchKeyPress(event)" />
+			<button id="crSearchButton" class="btn btn-default btn-sm" onclick="cr_Search()">搜索</button>
+		</div>
+		<div id="crSearchResult"></div>
+	</div>
+	<hr/>
     <div id='category_container'> 
     </div>
     <div id = "clothes"></div>
