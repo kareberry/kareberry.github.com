@@ -1,11 +1,9 @@
 .logbox {
 	font-size:12px;
-	margin-left:30px;
-	border-radius:3px;
-	border:1px #888 solid;
-	display:inline-block;
-	min-width:200px;
+	border:1px #e1e2e3 dashed;
 	padding:5px 10px;
+	max-height:300px;
+	overflow: auto;
 }
 .lognotice {
 	color:#AAA;
