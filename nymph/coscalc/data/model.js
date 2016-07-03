@@ -620,3 +620,12 @@ function save() {
   }
   return myClothes;
 }
+
+function onekeyo(){
+  
+  document.getElementById("ranking").style.display="";
+}
+function onekeyg(){
+  
+  document.getElementById("ranking").style.display="none";
+}

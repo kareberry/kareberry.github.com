@@ -1,0 +1,288 @@
+/* search.css */
+#crSearchText {
+	width:220px;
+	height: 30px;
+	margin-top: 5px;
+	float: left;
+	box-shadow: 0;
+    border: 1px solid #e1e2e3;
+    border-radius: 5px 0 0 5px;
+}
+#crSearchButton {
+	width:70px;
+	height: 30px;
+	float: left;
+	margin-top: 5px;
+	margin-left: -1;
+	z-index: 2;
+	border-radius: 0 5px 5px 0;
+}
+#crSearchBar {
+	margin-bottom:5px;
+	width: 100%；
+}
+#crSearchResult > div{
+	width: 100%；
+	margin-top:10px;
+	display:inline-block;
+}
+#crSearchResult .button {
+	font-size:12px;
+	margin-left: 2px;
+	margin-top: 2px;
+}
+#crSearchResult div.own.deps .button {
+	background-color: #fdd;
+}
+#crSearchResult div.own .button
+{
+	padding-left:20px;
+	background-position: 5px 8px;
+	background-repeat: no-repeat;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAU0lEQVR42mNgoAHgZ2FjO8/MxjafaMUs7Oz/QZiQJhTFYAzkg2VAOqEcfgKK+SGKUQXlcSoGAQxJdIxqMw7r8ShmIOhmokKFCMVwTdCw5qdatAMAai8zEfxslWsAAAAASUVORK5CYII=);
+	background-color: #dfd;
+
+}
+
+/* scanner.css */
+#cr_scanresult {
+	width:100%;
+	padding: 5px;
+	border-top: 1px solid #e1e2e3;
+	margin-top:5px;
+	max-height: 500px;
+	overflow: auto;
+}
+.cr_result_name {
+	font-weight:bold;
+	color:#F7C;
+	font-size:15px;
+}
+.cr_result_cate {
+	color:#777;
+}
+.cr_result_count {
+	color:#F72;
+}
+
+/* clothespanel.css */
+#crName {
+	width:240px;
+	height:25px;
+	margin:5px;
+}
+#crCategory {
+	width:130px;
+	height:25px;
+	margin:0 5px 5px;
+}
+#crId {
+	width:50px;
+	height:25px;
+	margin:0 0 5px;
+}
+#crRarity {
+	width:50px;
+	height:25px;
+	margin:0 5px 5px;
+}
+#crTags {
+	width:240px;
+	height:25px;
+	margin:0 5px 5px;
+}
+.crAttribute {
+	margin: 0 5px 5px;
+}
+.crAttribute * {
+	float:left;
+	border-radius:0;
+}
+.crAttribute span {
+	clear:left;
+	border-radius:5px 0 0 5px;
+	line-height:25px;
+}
+.crAttribute .last {
+	border-radius:0 5px 5px 0;
+}
+.crAttribute .first {
+	border-radius:5px 0 0 5px;
+}
+.crAttributeHr {
+	clear:both;
+	width:240px;
+	margin:2px 5px;
+	border-bottom:1px #777 solid;
+}
+#cr_add {
+	width:55px;
+	margin:5px;
+}
+#cr_reset {
+	width:55px;
+	margin:5px 5px 5px 0;
+}
+#cr_setdata {
+	width:55px;
+	margin:5px 5px 5px 0;
+}
+#cr_refresh {
+	width:55px;
+	margin:5px 5px 5px 0;
+}
+#crData {
+	width: 100%;
+	height: 30px;
+	margin:0 5px 5px;
+}
+#cr_list {
+	width:100%;
+	height:440px;
+	padding: 10px;
+	overflow: auto;
+}
+.cr_listitem {
+	border:1px #CCC solid;
+	padding:5px;
+	margin:2px 2px 0;
+	float: left;
+	margin-left: 5px;
+}
+.cr_loadeditem {
+	border:1px #e1e2e3 solid;
+	background:#fff;
+	border-radius: 5px;
+}
+.cr_listitem span{
+	display:inline-block;
+}
+.cr_listitem .crli_left{
+	width:100px;
+	padding-left:5px;
+	display:inline-block;
+	float:left;
+}
+.cr_listitem .crli_right{
+	float:left;
+	width:90px;
+	display:inline-block;
+}
+.cr_listitem .crli_delete{
+	float:left;
+	width:20px;
+	display:inline-block;
+}
+.cr_listitem .crli_btndelete{
+	height:20px;
+}
+.cr_listitem .crli_right *{
+	margin:3px 10px;
+}
+.cr_listitem .crli_l1{
+	font-weight:bold;
+	color:#F7C;
+	font-size:16px;
+	border-bottom:1px dashed #AAA;
+	margin-bottom:3px;
+}
+.cr_listitem .crli_l3{
+	color:#777;
+}
+.cr_listitem .crli_l4{
+	font-weight:bold;
+	color:#F77;
+	font-size:18px;
+}
+
+
+/*07-03 newstyle*/
+.clearfix:after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+
+/* Hides from IE-mac \*/
+
+* html .clearfix {height: 1%;}
+
+/* End hide from IE-mac */
+
+.person-add{
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+.person-add ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.person-add ul li{
+	margin-top: 3px;
+}
+.row-top{
+	margin-top: 10px;
+	border-top: 1px solid #939393;
+}
+.onekey-dp{
+	margin-top: 10px;
+	width: 100%;
+}
+.crsearchc{
+	width: 100%;
+	padding: 10px;
+}
+.dhr{
+	width: 100%;
+	height: 1px ;
+	background-color: #e1e2e3;
+	overflow: hidden;
+	margin-top: 1px;
+    margin-bottom: 1px;
+}
+.crAttribute label.active {
+    font-weight: bold;
+}
+.contest{
+	width:100%;
+	margin: 0;
+	padding: 0;
+}
+.contest ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.contest ul li{
+	float: left;
+	margin-left: 5px;
+}
+.main-body{
+	padding-top: 20px;
+}
+.explain{
+	margin: 0;
+	padding: 0;
+}
+.explain ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.explain ul li{
+	margin-top: 2px;
+	padding-left: 10px;
+}
+.add-cloth-per{
+	padding: 5px;
+}
+.bangdanin{
+	width: 40px;
+	height: 20px;
+	border-radius: 2px;
+}

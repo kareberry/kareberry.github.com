@@ -13,14 +13,14 @@
 #cr_setdata {width:55px;margin:5px 5px 5px 0}
 #cr_refresh {width:55px;margin:5px 5px 5px 0}
 #crData {width:240px;height:25px;margin:0 5px 5px}
-#cr_list {width:240px;min-height:50px;padding-bottom:2px;border:1px #888 solid;margin:0 5px 5px}
-.cr_listitem {border:1px #CCC solid;padding:5px;margin:2px 2px 0}
-.cr_loadeditem {border:1px #F77 solid;background:#FFF7F7}
+#cr_list {width:100%;height:auto;padding-bottom:2px;border:1px #888 solid;margin:0 5px 5px}
+.cr_listitem {border:1px #CCC solid;padding:5px;margin:2px 2px 0;float: left;margin-left: 5px;}
+.cr_loadeditem {border:1px #F77 solid;background:#FFF7F7;}
 .cr_listitem span{display:inline-block}
 .cr_listitem .crli_left{width:100px;padding-left:5px;display:inline-block}
 .cr_listitem .crli_right{width:90px;display:inline-block}
 .cr_listitem .crli_delete{width:20px;display:inline-block}
-.cr_listitem .crli_btndelete{height:125px;margin-top:-175px}
+.cr_listitem .crli_btndelete{height:125px;margin-top:-95px}
 .cr_listitem .crli_right *{margin:3px 10px}
 .cr_listitem .crli_l1{font-weight:bold;color:#F7C;font-size:16px;border-bottom:1px dashed #AAA;margin-bottom:3px}
 .cr_listitem .crli_l3{color:#777}

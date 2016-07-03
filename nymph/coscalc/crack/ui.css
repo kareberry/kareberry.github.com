@@ -15,6 +15,7 @@ th
 	color: #039;
 	padding: 10px 8px;
 	border-bottom: 2px solid #6678b1;
+	text-align: center;
 }
 th.score {
 	width: 55px;
@@ -104,6 +105,7 @@ div.announcement {
 }
 div.weightContainer {
 	display: inline-block;
+	margin-left: 5px;
 }
 ul.tabs {
 	margin: 0;
@@ -206,7 +208,7 @@ table.ranking span {
 	display: inline-block;
 }
 table.ranking td.category {
-	width: 7em;
+	width: 8em;
 	vertical-align: top;
 }
 .red {
@@ -238,21 +240,25 @@ select: hover
 	box-shadow: 1px 1px 5px #CCC;
 }
 input[type=text] {
-	height: 1.5em;
-	border-radius: 3px;
-	border: 1px solid #CCC;
-	padding-left: 8px;
-	margin: 1px;
-	font-weight: 200;
-	font-size: 1em;
-	font-family: Verdana;
-	box-shadow: 1px 1px 5px #CCC;
+	height: 2.2em;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #CCC;
+    padding-left: 8px;
+    margin-left: -1px;
+    z-index: 2;
+    /* margin: 1px; */
+    font-weight: 200;
+    font-size: 1em;
+    font-family: Verdana;
+    /* box-shadow: 1px 1px 5px #CCC; */
 }
 input.suggest {
 	width: 30em;
 }
 div.control {
-	height: 1.8em;
+	height: 2.2em;
+	margin-left: 15px;
+	margin-bottom: 5px;
 }
 input[type=radio].nice, input[type=checkbox].nice {
 	display:none;
