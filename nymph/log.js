@@ -1,4 +1,4 @@
-var log_init = function()
+$(function()
 {
 	$(document).ready(function()
 	{
@@ -12,7 +12,7 @@ var log_init = function()
 			str += '<br/><br/><span class="lognotice">收起更新日志</span>';
 			divbox.attr('fulltext', str);
 			var trun = '<span class="loglastupdate">最后更新: ' + lines[0] + '</span>';
-			trun += '<br/><br/>' + 'By 果子';
+			trun += '<br/>By 果子';
 			trun += '<br/><span class="lognotice">查看全部更新日志</span>';
 			divbox.attr('truncatedtext', trun);
 			divbox.html(trun);
@@ -35,7 +35,7 @@ var log_init = function()
 			});
 		}
 	});
-}();
+});
 
 function log_fixtext(str)
 {

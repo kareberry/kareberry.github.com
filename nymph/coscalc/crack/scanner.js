@@ -9,7 +9,10 @@ function cr_Scan()
 			if (clothesSet[cate][id].own)
 				targettmp[clothesSet[cate][id].name] = clothesSet[cate][id].type.type;
 	for (var name in targettmp)
-		target.push([name, targettmp[name]]);
+		target.push({
+			Name : name,
+			Category : targettmp[name],
+		});
 	var result = [];
 	for (var i in target)
 		result[i] = [];
@@ -28,24 +31,51 @@ function cr_Scan()
 		calcClothes(criteria);
 		for (var i in target)
 		{
-			var cate = target[i][1];
+			var cate = target[i].Category;
 			for (var j = 0; j < 5 && j < clothesRanking[cate].length; j++)
 			{
-				if (clothesRanking[cate][j].name == target[i][0])
-					result[i].push([theme, j]);
+				var list = [];
+				for (var k = 0; k < 5 && k < clothesRanking[cate].length; k++)
+					list.push(clothesRanking[cate][k].name + '(' + clothesRanking[cate][k].totalScore + ')');
+				if (clothesRanking[cate][j].name == target[i].Name)
+					result[i].push({
+						Theme : theme,
+						Rank : j,
+						List : list,
+					});
 			}
 		}
 	}
+	$('#cr_scanresult').show();
 	$('#cr_scanresult').html('');
 	for (var i in target)
 	{
 		if (i > 0)
 			$('#cr_scanresult').append('<hr/>');
-		$('#cr_scanresult').append('<div class="cr_result_name">' + target[i][0] + '</div>');
-		$('#cr_scanresult').append('<div class="cr_result_cate">' + target[i][1] + '</div>');
+		$('#cr_scanresult').append('<div class="cr_result_name">' + target[i].Name + '</div>');
+		$('#cr_scanresult').append('<div class="cr_result_cate">' + target[i].Category + '</div>');
 		$('#cr_scanresult').append('<div class="cr_result_count">(共' + result[i].length + '关)</div>');
+		result[i].sort(function(a, b)
+		{
+			var n = a.Rank - b.Rank;
+			if (n != 0)
+				return n;
+			return (a.Theme > b.Theme) ? 1 : ((a.Theme < b.Theme) ? -1 : 0);
+		});
 		for (var j in result[i])
-			$('#cr_scanresult').append('<div class="cr_result_item">' + result[i][j][0] + '&nbsp;-&nbsp;' + (result[i][j][1] + 1) + '</div>');
+		{
+			var list = [];
+			for (var k in result[i][j].List)
+			{
+				var str = result[i][j].List[k];
+				if (k == result[i][j].Rank)
+					list.push('<span class="cr_result_highlight"> ' + str + '</span>');
+				else
+					list.push(str);
+			}
+			var html = '<div class="cr_result_item"><div class="cr_result_level">' + result[i][j].Theme + '&nbsp;第' + (result[i][j].Rank + 1) + '名</div><div class="cr_result_list">' + list.join('&nbsp;>&nbsp;') + '</div></div>';
+			$('#cr_scanresult').append(html);
+		}
 	}
 }
 
