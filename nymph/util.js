@@ -51,3 +51,20 @@ function Contains(array, value)
 	}
 	return false;
 }
+
+function Find(array, value)
+{
+	for (var i = 0; i < array.length; ++i)
+		if (array[i] == value)
+			return i;
+	return -1;
+}
+
+function MakeUnselectable(jQueryObject, cursor)
+{
+	jQueryObject.attr('onselectstart', 'return false');
+	jQueryObject.css('-moz-user-select', 'none');
+	if (!cursor)
+		cursor = 'default';
+	jQueryObject.css('cursor', cursor);
+}
