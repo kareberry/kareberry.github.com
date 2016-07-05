@@ -1,5 +1,8 @@
 function cr_Scan()
 {
+	var rankinglength = parseInt($('#cr_scanrankinglength').val());
+	if (isNaN(rankinglength))
+		rankinglength = 5;
 	var targettmp = {};
 	var target = [];
 	for (var i in cr_Wardrobe)
@@ -32,10 +35,10 @@ function cr_Scan()
 		for (var i in target)
 		{
 			var cate = target[i].Category;
-			for (var j = 0; j < 5 && j < clothesRanking[cate].length; j++)
+			for (var j = 0; j < rankinglength && j < clothesRanking[cate].length; j++)
 			{
 				var list = [];
-				for (var k = 0; k < 5 && k < clothesRanking[cate].length; k++)
+				for (var k = 0; k < rankinglength && k < clothesRanking[cate].length; k++)
 					list.push(clothesRanking[cate][k].name + '(' + clothesRanking[cate][k].totalScore + ')');
 				if (clothesRanking[cate][j].name == target[i].Name)
 					result[i].push({

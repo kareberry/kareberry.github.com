@@ -64,6 +64,18 @@
 .cr_result_count {
 	color:#F72;
 }
+#cr_scanresult .cr_result_item {
+	margin-top:10px;
+}
+#cr_scanresult .cr_result_level {
+	font-weight:bold;
+}
+#cr_scanresult .cr_result_list {
+	white-space:nowrap;
+}
+#cr_scanresult .cr_result_highlight {
+	color:#F00;
+}
 
 /* clothespanel.css */
 #crName {
