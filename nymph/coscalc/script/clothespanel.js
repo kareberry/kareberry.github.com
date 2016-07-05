@@ -201,7 +201,7 @@ function cr_SyncData()
 		var c = sa[i].split('|');
 		if (c.length != wardrobe[0].length)
 			continue;
-		cr_Wardrobe.push(c);
+		cr_Wardrobe.push([c, false]);
 	}
 	cr_UpdateList();
 }
