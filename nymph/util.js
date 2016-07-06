@@ -31,14 +31,14 @@ function Trim(array, value)
 {
 	var newArray = [];
 	for (var i = 0; i < array.length; ++i)
-		if (array[i] != value)
+		if (array[i] != value && (!isNaN(value) || !isNaN(array[i])))
 			newArray.push(array[i]);
 	return newArray;
 }
 
-function RoundEx(num, digits)
+function RoundEx(value, digits)
 {
-	return Math.round(num * Math.pow(10, digits)) / Math.pow(10, digits);
+	return Math.round(value * Math.pow(10, digits)) / Math.pow(10, digits);
 }
 
 function Contains(array, value)

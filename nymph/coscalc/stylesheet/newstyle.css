@@ -207,6 +207,12 @@
 	font-size:18px;
 }
 
+/*07-06 newstyle*/
+.weightContainer .boost {
+	float:left;
+	clear:none;
+	margin: 5px 0 0 10px;
+}
 
 /*07-03 newstyle*/
 .clearfix:after {
