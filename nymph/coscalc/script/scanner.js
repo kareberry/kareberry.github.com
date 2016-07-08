@@ -1,5 +1,13 @@
 var cr_synclock = false;
 
+$(function()
+{
+	var len = GetUrlParam('len');
+	if (!len)
+		len = 5;
+	$('#cr_scanrankinglength').val(len);
+});
+
 function cr_Scan()
 {
 	if (cr_synclock)
