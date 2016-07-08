@@ -7,6 +7,16 @@ function GetUrlParam(name)
 	return null;
 }
 
+function SaveData(key, value)
+{
+	localStorage.setItem(key, value);
+}
+
+function LoadData(key)
+{
+	return localStorage.getItem(key);
+}
+
 function TrimRepeatEx(array, func)
 {
 	var hash = {};
@@ -31,9 +41,14 @@ function Trim(array, value)
 {
 	var newArray = [];
 	for (var i = 0; i < array.length; ++i)
-		if (array[i] != value && (!isNaN(value) || !isNaN(array[i])))
+		if (!ValueEqualsEx(array[i], value))
 			newArray.push(array[i]);
 	return newArray;
+}
+
+function ValueEqualsEx(value1, value2)
+{
+	return value1 == value2 || (isNaN(value1) && isNaN(value2));
 }
 
 function RoundEx(value, digits)
@@ -55,16 +70,33 @@ function Contains(array, value)
 function Find(array, value)
 {
 	for (var i = 0; i < array.length; ++i)
-		if (array[i] == value)
+		if (ValueEqualsEx(array[i], value))
 			return i;
 	return -1;
 }
 
-function MakeUnselectable(jQueryObject, cursor)
+function Replace(array, valueOld, valueNew)
 {
-	jQueryObject.attr('onselectstart', 'return false');
-	jQueryObject.css('-moz-user-select', 'none');
-	if (!cursor)
-		cursor = 'default';
-	jQueryObject.css('cursor', cursor);
+	for (var i = 0; i < array.length; ++i)
+		if (ValueEqualsEx(array[i], valueOld))
+			array[i] = valueNew;
+	return array;
+}
+
+function MakeUnselectable(ele, cursor)
+{
+	ele = GetJQueryObject(ele);
+	ele.attr('onselectstart', 'return false');
+	ele.css('-moz-user-select', 'none');
+	if (cursor)
+		ele.css('cursor', cursor);
+	else if (ele.css('cursor') == 'auto')
+		ele.css('cursor', 'default');
+}
+
+function GetJQueryObject(value)
+{
+	if (typeof('') == "string")
+		return $(value);
+	return value;
 }
